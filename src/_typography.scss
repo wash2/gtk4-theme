@@ -1,0 +1,80 @@
+@use 'abstract' as a;
+
+.large-title {
+    font-weight: 300;
+    font-size: 24pt;
+ }
+
+.h1,
+.title-1 {
+    font-weight: 800;
+    font-size: 20pt;
+ }
+
+.h2,
+.title-2 {
+    font-weight: 800;
+    font-size: 15pt;
+ }
+
+.h3,
+.title-3 {
+    font-weight: 700;
+    font-size: 15pt;
+ }
+
+.h4,
+.title-4 {
+    font-weight: 700;
+    font-size: 13pt;
+ }
+
+.heading {
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+.body {
+    font-weight: 400;
+    font-size: 11pt;
+}
+
+.caption-heading {
+    font-weight: 700;
+    font-size: 9pt;
+ }
+
+.caption {
+    font-weight: 400;
+    font-size: 9pt;
+ }
+
+.accent {
+    color: a.$accent;
+}
+
+@mixin _link($prefix: "") {
+    #{a.prefix_class($prefix) + " button.link"},
+    #{a.prefix_class($prefix) + " link"} {
+        color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.4);
+        text-decoration: underline;
+
+        &:visited {
+            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.6);
+        }
+
+        &:hover {
+            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.2);
+        }
+
+        &:active {
+            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.4);
+        }
+
+        &:disabled { color: a.alpha(a.mix(a.clr("container_text", $prefix), a.$accent, 0.4), 0.5); }
+    }
+}
+
+@include _link();
+@include _link(a.$py);
+@include _link(a.$sy);

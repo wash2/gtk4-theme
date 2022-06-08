@@ -1,0 +1,68 @@
+@use '../abstract' as a;
+
+@mixin _list($prefix: "") {
+    #{"list" + a.prefix_class($prefix)},
+    #{"listview" + a.prefix_class($prefix)} {
+        color: a.clr(a.$container_text, $prefix);
+        background-color: a.clr(a.$container, $prefix);
+        border-color: a.alpha(a.clr(a.$container, $prefix), 0.8);
+
+        &:backdrop {
+            color: a.darker(a.clr(a.$container_text, $prefix));
+            background-color: a.darker(a.clr(a.$container, $prefix));
+            border-color: a.alpha(a.darker(a.clr(a.$container, $prefix)), 0.8);
+        }
+        
+          > row { padding: 2px; }
+          > row.expander { padding: 0px; }
+          > row.expander .row-header { padding: 2px; }
+        
+          &.horizontal row.separator,
+          &.separators.horizontal > row:not(.separator) {
+            border-left: 1px solid a.clr(a.$container_divider, $prefix);
+          }
+          &:not(.horizontal) row.separator,
+          &.separators:not(.horizontal) > row:not(.separator) {
+            border-bottom: 1px solid a.clr(a.$container_divider, $prefix);
+          }
+    }
+}
+
+@mixin _row($prefix: "") {
+    #{"list" + a.prefix_class($prefix) + " row"},
+    #{"listview" + a.prefix_class($prefix) + " row"} {
+        &.activatable {
+            &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
+        
+            &:hover {  
+                background-color: a.clr(a.$widget_hover, $prefix);
+                background-color: a.clr(a.$widget_text, $prefix);
+             }
+        
+            &:active { box-shadow: inset 0 2px 2px -2px a.alpha(a.clr(a.$container_text, $prefix), 0.8); }
+        
+            &:selected {
+                &:active { box-shadow: inset 0 2px 3px -1px a.alpha(a.clr(a.$container_text, $prefix), 0.5); }
+            
+                &.has-open-popup,
+                &:hover { 
+                    background-color: a.clr(a.$widget_hover, $prefix);
+                    background-color: a.clr(a.$widget_text, $prefix);
+                }
+            }
+        }
+        &:selected {
+            outline-color: a.clr(a.$accent, $prefix);
+            background-color: a.clr(a.$accent, $prefix);
+            color: a.clr(a.$accent_text, $prefix);
+        }
+    }
+}
+
+@include _list();
+@include _list(a.$py);
+@include _list(a.$sy);
+
+@include _row();
+@include _row(a.$py);
+@include _row(a.$sy);

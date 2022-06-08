@@ -1,0 +1,13 @@
+@use '../abstract' as a;
+
+@mixin _container($prefix: "") {
+    #{"box" + a.prefix_class($prefix)} {
+        color: a.clr(a.$container_text, $prefix);
+        background-color: a.clr(a.$container, $prefix);
+        border-color: a.clr(a.$container, $prefix);
+    }
+}
+
+@include _container();
+@include _container(a.$py);
+@include _container(a.$sy);

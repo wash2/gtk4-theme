@@ -1,0 +1,85 @@
+$py: "primary";
+$sy: "secondary";
+$bg: "background";
+
+$de: "destructive";
+$su: "suggested";
+
+@function prefix_class($prefix) {
+    @if $prefix == "" {
+        @return "";
+    } 
+    @else {
+        @return #{"." + $prefix};
+    }
+}
+
+
+// helpers for calling gtk color functions
+
+@function darker($c) {
+    @return #{"darker(" + $c + ")"};
+}
+
+@function lighter($c) {
+    @return #{"lighter(" + $c + ")"};
+}
+
+// t should be a value in [0,2]
+@function shade($c, $t) {
+    @return #{"shade(" + $c + ", " + $t + ")"};
+}
+
+// t should be a value in [0,1]
+@function alpha($c, $t) {
+    @return #{"alpha(" + $c + ", " + $t + ")"};
+}
+
+// t should be a value in [0,1]
+@function mix($c1, $c2, $t) {
+    @return #{"mix(" + $c1 + ", " $c2 + ", " + $t + ")"};
+}
+
+// helper for getting the correct theme variable
+// using variables is intended to increase readability
+// and catch spelling errors
+@function clr($suffix, $prefix: "") {
+    @if $prefix == $sy {
+        @return #{"@" + $sy + "_" + $suffix}; 
+    }
+    @else if $prefix == $py {
+        @return #{"@" + $py  + "_" + $suffix};
+    }
+    @else if $prefix == $de {
+        @return #{"@" + $de  + "_" + $suffix};
+    }
+    @else if $prefix == $su {
+        @return #{"@" + $su  + "_" + $suffix};
+    }
+    @else {
+        @return #{"@" + $bg + "_" + $suffix}; 
+    }
+}  
+
+
+$container: "container";
+$container_opacity_80: "container_opacity_80";
+$container_divider: "container_divider";
+$container_text: "container_text";
+
+$widget_base: "widget_base";
+$widget_base_opacity_80: "widget_base_opacity_80";
+$widget_hover: "widget_hover";
+$widget_pressed: "widget_pressed";
+$widget_focused: "widget_focused";
+$widget_focused_opacity_80: "widget_focused_opacity_80";
+$widget_divider: "widget_divider";
+$widget_text: "widget_text";
+$widget_text_opacity_80: "widget_text_opacity_80";
+$widget_disabled: "widget_disabled";
+$widget_disabled_text: "widget_disabled_text";
+
+$accent: "@accent";
+$accent_opacity_80: "@accent_opacity_80";
+$accent_text: "@accent_text";
+$accent_nav_handle_text: "@accent_nav_handle_text";
