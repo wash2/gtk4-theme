@@ -56,8 +56,11 @@ $su: "suggested";
     @else if $prefix == $su {
         @return #{"@" + $su  + "_" + $suffix};
     }
-    @else {
+    @else if $prefix == $bg {
         @return #{"@" + $bg + "_" + $suffix}; 
+    }
+    @else {
+        @return#{"@" + $suffix}
     }
 }  
 
@@ -79,7 +82,7 @@ $widget_text_opacity_80: "widget_text_opacity_80";
 $widget_disabled: "widget_disabled";
 $widget_disabled_text: "widget_disabled_text";
 
-$accent: "@accent";
-$accent_opacity_80: "@accent_opacity_80";
-$accent_text: "@accent_text";
-$accent_nav_handle_text: "@accent_nav_handle_text";
+$accent: "accent";
+$accent_opacity_80: "accent_opacity_80";
+$accent_text: "accent_text";
+$accent_nav_handle_text: "accent_nav_handle_text";

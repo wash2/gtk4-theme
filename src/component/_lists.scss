@@ -59,10 +59,10 @@
     }
 }
 
-@include _list();
+@include _list(a.$bg);
 @include _list(a.$py);
 @include _list(a.$sy);
 
-@include _row();
+@include _row(a.$bg);
 @include _row(a.$py);
 @include _row(a.$sy);

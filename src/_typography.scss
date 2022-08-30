@@ -50,28 +50,28 @@
  }
 
 .accent {
-    color: a.$accent;
+    color: a.clr(a.$accent);
 }
 
 @mixin _link($prefix: "") {
     #{a.prefix_class($prefix) + " button.link"},
     #{a.prefix_class($prefix) + " link"} {
-        color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.4);
+        color: a.mix(a.clr("container_text", $prefix), a.clr(a.$accent), 0.4);
         text-decoration: underline;
 
         &:visited {
-            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.6);
+            color: a.mix(a.clr("container_text", $prefix), a.clr(a.$accent), 0.6);
         }
 
         &:hover {
-            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.2);
+            color: a.mix(a.clr("container_text", $prefix), a.clr(a.$accent), 0.2);
         }
 
         &:active {
-            color: a.mix(a.clr("container_text", $prefix), a.$accent, 0.4);
+            color: a.mix(a.clr("container_text", $prefix), a.clr(a.$accent), 0.4);
         }
 
-        &:disabled { color: a.alpha(a.mix(a.clr("container_text", $prefix), a.$accent, 0.4), 0.5); }
+        &:disabled { color: a.alpha(a.mix(a.clr("container_text", $prefix), a.clr(a.$accent), 0.4), 0.5); }
     }
 }
 
