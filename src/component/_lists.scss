@@ -3,12 +3,12 @@
 @mixin _list($prefix: "") {
     #{"list" + a.prefix_class($prefix)},
     #{"listview" + a.prefix_class($prefix)} {
-        color: a.clr(a.$container_text, $prefix);
+        color: a.clr(a.$container_fg, $prefix);
         background-color: a.clr(a.$container, $prefix);
         border-color: a.alpha(a.clr(a.$container, $prefix), 0.8);
 
         &:backdrop {
-            color: a.darker(a.clr(a.$container_text, $prefix));
+            color: a.darker(a.clr(a.$container_fg, $prefix));
             background-color: a.darker(a.clr(a.$container, $prefix));
             border-color: a.alpha(a.darker(a.clr(a.$container, $prefix)), 0.8);
         }
@@ -36,25 +36,25 @@
         
             &:hover {  
                 background-color: a.clr(a.$widget_hover, $prefix);
-                background-color: a.clr(a.$widget_text, $prefix);
+                background-color: a.clr(a.$widget_fg, $prefix);
              }
         
-            &:active { box-shadow: inset 0 2px 2px -2px a.alpha(a.clr(a.$container_text, $prefix), 0.8); }
+            &:active { box-shadow: inset 0 2px 2px -2px a.alpha(a.clr(a.$container_fg, $prefix), 0.8); }
         
             &:selected {
-                &:active { box-shadow: inset 0 2px 3px -1px a.alpha(a.clr(a.$container_text, $prefix), 0.5); }
+                &:active { box-shadow: inset 0 2px 3px -1px a.alpha(a.clr(a.$container_fg, $prefix), 0.5); }
             
                 &.has-open-popup,
                 &:hover { 
                     background-color: a.clr(a.$widget_hover, $prefix);
-                    background-color: a.clr(a.$widget_text, $prefix);
+                    background-color: a.clr(a.$widget_fg, $prefix);
                 }
             }
         }
         &:selected {
             outline-color: a.clr(a.$accent, $prefix);
             background-color: a.clr(a.$accent, $prefix);
-            color: a.clr(a.$accent_text, $prefix);
+            color: a.clr(a.$accent_fg, $prefix);
         }
     }
 }

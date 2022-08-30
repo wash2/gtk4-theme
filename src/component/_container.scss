@@ -2,7 +2,7 @@
 
 @mixin _container($prefix: "") {
     #{"box" + a.prefix_class($prefix)} {
-        color: a.clr(a.$container_text, $prefix);
+        color: a.clr(a.$container_fg, $prefix);
         background-color: a.clr(a.$container, $prefix);
         border-color: a.clr(a.$container, $prefix);
     }
